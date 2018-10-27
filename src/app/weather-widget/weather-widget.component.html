@@ -1,0 +1,55 @@
+<section>
+  <div class="row justify-content-between">
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-sm-6">
+          <div ngbDropdown class="d-inline-block" style="width:100%">
+            <button class="btn btn-outline-black" style="width:100%" id="dropdownBasic1" ngbDropdownToggle>country</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item" *ngFor="let country of countries" (click)="getCities(country)">{{country}}</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div ngbDropdown class="d-inline-block" style="width:100%">
+            <button class="btn btn-outline-black" style="width:100%" id="dropdownBasic1" ngbDropdownToggle>city</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="selectedCountry=='us'">
+              <button class="dropdown-item" *ngFor="let city of cities[0]" (click)="getInfo(city)">{{city}}</button>
+            </div>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="selectedCountry=='egypt'">
+              <button class="dropdown-item" *ngFor="let city of cities[1]" (click)="getInfo(city)">{{city}}</button>
+            </div>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="selectedCountry=='germany'">
+              <button class="dropdown-item" *ngFor="let city of cities[2]" (click)="getInfo(city)">{{city}}</button>
+            </div>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1" *ngIf="selectedCountry=='italy'">
+              <button class="dropdown-item" *ngFor="let city of cities[3]" (click)="getInfo(city)">{{city}}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-lg-2">
+      <a class="btn btn-dark text-white " style="width:100%" *ngIf="viewMood=='l'" (click)="switchTogrid()">G</a>
+      <a class="btn  btn-dark text-white" style="width:100%" *ngIf="viewMood=='g'" (click)="switchTolist()">l</a>
+
+    </div>
+  </div>
+  <div class="row " *ngIf="viewMood=='l'">
+    <div class="col-sm-12">
+      <ul>
+        <li *ngFor="let item of list">[ {{item.dt_txt |date}} ] - {{item.main.temp |temp}} c </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row justify-content-center pt-3" *ngIf="viewMood=='g'">
+    <div class="card-deck" *ngFor="let item of list">
+      <div class="card pl-4 pr-4 m-4" style="max-width: 18rem">
+        <div class="card-body ">
+          <p class="card-text"> [ {{item.dt_txt |date}} ]</p>
+          <p class="card-text pt-4">{{item.main.temp |temp}} c </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
