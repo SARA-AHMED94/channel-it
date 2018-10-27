@@ -1,7 +1,6 @@
-# Weeka
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
-
+## weather widget
+i created one component switches between two views depending on view mood to display weather information after selecting a specific 
+country and city
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
